@@ -19,8 +19,14 @@ public class ConvertController {
         return "Converter - API Running...";
     }
 
-    @GetMapping(path = "convert/{unitIn}/{unitOut}/{value}")
-    public String convert(@PathVariable String unitIn, @PathVariable String unitOut, @PathVariable double value) {
-        return this.convertService.convertSI(value, unitIn, unitOut);
+    @GetMapping(path = "convert/{unitIn}/{unitOut}/{value}/{type}")
+    public String convert(@PathVariable String unitIn, @PathVariable String unitOut, @PathVariable double value, @PathVariable String type) {
+        if(type.equalsIgnoreCase("temperature")) {
+            return this.convertService.convertTemperature(value, unitOut);
+        }else if(type.equalsIgnoreCase("length")) {
+            return this.convertService.convertSI(value, unitIn, unitOut);
+        }else{
+            return "Invalid type selected, it should be temperature or length";
+        }
     }
 }
