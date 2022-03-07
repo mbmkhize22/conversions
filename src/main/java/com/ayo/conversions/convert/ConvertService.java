@@ -23,12 +23,14 @@ public class ConvertService {
     }
 
 
+    // Length conversion
     public String convertSI(double val, String unitIn, String unitOut) {
         loadMetricLength();
         double calc = val * loadMatricsLength.get(unitIn) / loadMatricsLength.get(unitOut);
         return calc + " " + unitOut;
     }
 
+    // Temperature conversion
     public String convertTemperature(double val, String unitOut) {
         if(unitOut.equalsIgnoreCase("Celsius")) {
             return "" + df.format((val - 32) / 1.8) + " C"; // = Celsius
