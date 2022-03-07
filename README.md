@@ -16,3 +16,6 @@ Convert Metric to imperial and vice versa. The API must cater for at least 5 con
     6. The project must be able to run in its own Docker environment
 
     7. Build system must use Maven.
+# Docker Setup
+    docker build -t spring-boot-docker.jar .
+    docker run -p 8080:8080 spring-boot-docker.jar
